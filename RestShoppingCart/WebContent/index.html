@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+</script>
+<script type="text/javascript">
+
+var app = angular.module("ProductsApp",[]);
+
+app.controller("ProductsController", function($scope,$http){
+	
+	$http.get('http://localhost:8080/AffableBeanRest/rest/entities.product').then(function(response){
+		$scope.products=response.data;
+	});
+	
+	
+});
+
+
+
+</script>
+</head>
+
+<body ng-app="ProductsApp" ng-controller="ProductsController">
+
+<ul>
+
+<li ng-repeat="p in products">
+{{ p.id }}-{{ p.name }}-{{ p.price }}-{{ p.description }}
+<img ng-src="img/products/{{p.name}}.png" width="40" height="40"/>
+</ul>
+</body>
+
+
+</html>
