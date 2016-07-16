@@ -3,12 +3,11 @@
 
 <head>
 
-<script
-	src="js/angular.min.js">
-</script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular-resource.min.js"></script>
 <script type="text/javascript">
 
-var app = angular.module("ProductsApp",[]);
+var app = angular.module("ProductsApp",['ngResource']);
 
 app.controller("ProductsController", function($scope,$http){
 	
@@ -18,8 +17,6 @@ app.controller("ProductsController", function($scope,$http){
 	
 	
 });
-
-
 
 </script>
 </head>
