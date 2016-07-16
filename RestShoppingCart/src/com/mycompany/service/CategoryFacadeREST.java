@@ -29,11 +29,7 @@ import com.mycompany.entities.Category;
  */
 
 @Path("entities.category")
-public class CategoryFacadeREST extends AbstractFacade<Category> {
-	EntityManagerFactory emfactory = Persistence
-			.createEntityManagerFactory("elink_JPA");
-
-	EntityManager em = emfactory.createEntityManager();
+public class CategoryFacadeREST extends AbstractFacade<Category> {	
 	
     public CategoryFacadeREST() {
         super(Category.class);
@@ -89,7 +85,7 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+    	return SingletonEntityFactory.getEManagerFactory().createEntityManager();
     }
     
 }

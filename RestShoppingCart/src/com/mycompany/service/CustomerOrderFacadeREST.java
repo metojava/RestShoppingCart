@@ -30,10 +30,6 @@ import com.mycompany.entities.CustomerOrder;
 
 @Path("entities.customerorder")
 public class CustomerOrderFacadeREST extends AbstractFacade<CustomerOrder> {
-	EntityManagerFactory emfactory = Persistence
-			.createEntityManagerFactory("elink_JPA");
-
-	EntityManager em = emfactory.createEntityManager();
 
     public CustomerOrderFacadeREST() {
         super(CustomerOrder.class);
@@ -89,7 +85,8 @@ public class CustomerOrderFacadeREST extends AbstractFacade<CustomerOrder> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+    	return SingletonEntityFactory.getEManagerFactory().createEntityManager();
     }
+    
     
 }

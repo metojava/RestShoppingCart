@@ -32,10 +32,6 @@ import com.mycompany.entities.OrderedProductPK;
 
 @Path("entities.orderedproduct")
 public class OrderedProductFacadeREST extends AbstractFacade<OrderedProduct> {
-	EntityManagerFactory emfactory = Persistence
-			.createEntityManagerFactory("elink_JPA");
-
-	EntityManager em = emfactory.createEntityManager();
 
     private OrderedProductPK getPrimaryKey(PathSegment pathSegment) {
         /*
@@ -114,7 +110,8 @@ public class OrderedProductFacadeREST extends AbstractFacade<OrderedProduct> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+    	return SingletonEntityFactory.getEManagerFactory().createEntityManager();
     }
+    
     
 }
